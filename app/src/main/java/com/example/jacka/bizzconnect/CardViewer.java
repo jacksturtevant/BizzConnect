@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class CardViewer extends AppCompatActivity{
     @Override
     public void grantUriPermission(String toPackage, Uri uri, int modeFlags) {
-        
+
     }
 
     private SearchView mSearchbar;
