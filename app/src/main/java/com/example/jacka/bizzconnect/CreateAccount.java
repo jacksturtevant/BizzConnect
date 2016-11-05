@@ -32,8 +32,10 @@ public class CreateAccount extends AppCompatActivity{
             @Override
             public void onClick(View view) {
 
+
                 createAccount();
                     startActivity(new Intent(CreateAccount.this, UserHome.class));
+
             }
         });
 

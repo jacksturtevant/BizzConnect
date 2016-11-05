@@ -49,12 +49,17 @@
                 android:layout_gravity="center_horizontal"
 
                 />
-            <QuickContactBadge
+
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/contact1"
-                
+                android:scaleType="fitCenter"
+                android:background="@drawable/eddieface"
+
                 />
+
+
 
 
 
