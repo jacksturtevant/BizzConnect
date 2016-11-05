@@ -2,12 +2,9 @@ package com.example.jacka.bizzconnect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.ArrayList;
 
 /**
  * Created by Jacka on 11/5/2016.
@@ -19,7 +16,6 @@ public class CreateAccount extends AppCompatActivity{
     private EditText mNameView;
     private EditText mUserName;
     private Button mRegister;
-    public static ArrayList<UserInfo> userList= new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,16 +31,9 @@ public class CreateAccount extends AppCompatActivity{
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mNameView.equals(null) || mEmailView.equals(null) || mPasswordView.equals(null)){
 
-                }
-                else if(mPasswordView.getText().toString().length()<8){
-
-                }
-                else{
                 createAccount();
-                    startActivity(new Intent(CreateAccount.this, CreateAccount.class));
-                }
+                    startActivity(new Intent(CreateAccount.this, UserHome.class));
             }
         });
 

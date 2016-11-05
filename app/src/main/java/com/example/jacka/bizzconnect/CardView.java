@@ -27,7 +27,7 @@ public class CardView extends View {
                 0, 0);
 
         try {
-            mShowText = a.getBoolean(R.styleable.CardView_showText, false);
+            mShowText = a.getBoolean(R.styleable.CardView_showText2, false);
             mTextPos = a.getInteger(R.styleable.CardView_labelPosition, 0);
         } finally {
             a.recycle();
