@@ -2,6 +2,7 @@ package com.example.jacka.bizzconnect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,21 +49,18 @@ public class CreateAccount extends AppCompatActivity{
         });
 
     }
-    private ArrayList<UserInfo> createAccount(){
+    private void createAccount(){
+        UserInfo newUser;
 
         if(mNumberView.toString().equals("")){
-            UserInfo newUser = new UserInfo(mUserName.getText().toString(), mNameView.getText().toString(), mPasswordView.getText().toString(), mEmailView.getText().toString());
-            userList.add(newUser);
+            newUser = new UserInfo(mUserName.getText().toString(), mNameView.getText().toString(), mPasswordView.getText().toString(), mEmailView.getText().toString());
 
         }
         else {
-            UserInfo newUser = new UserInfo(mUserName.getText().toString(), mNameView.getText().toString(), mPasswordView.getText().toString(), mNumberView.getText().toString(), mEmailView.getText().toString());
-            userList.add(newUser);
+            newUser = new UserInfo(mUserName.getText().toString(), mNameView.getText().toString(), mPasswordView.getText().toString(), mNumberView.getText().toString(), mEmailView.getText().toString());
         }
-        return null;
-    }
-    public ArrayList<UserInfo> getUserList(){
-        return userList;
+        AllUsers.getIns().getMap().put(mUserName.getText().toString(), newUser);
+        AllUsers.getIns().saveUser();
     }
 
 }
