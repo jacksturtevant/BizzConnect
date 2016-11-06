@@ -11,7 +11,12 @@
     <string name="display_name">Name:</string>
     <string name="display_email">Email:</string>
     <string name="display_number">Phone Number: </string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="display_name1">Eddie Salvatierra</string>
+    <string name="display_email1">edsalva123@gmail.com</string>
+    <string name="display_number1">443-619-9003</string>
+    <string name="display_company1">RPM Tech</string>
+    <string name="display_bcontact">Add Contact</string>
+    <string name="display_blink">Linkedin</string>
     <string name="action_new_user">Create New Account</string>
     <string name="action_register">Register</string>
     <string name="action_viewcards">View Saved Business Cards</string>

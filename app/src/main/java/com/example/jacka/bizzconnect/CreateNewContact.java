@@ -36,11 +36,13 @@ public class CreateNewContact {
 
     }
 
-    public void createContact(String displayName, String number,Context cntx /*App or Activity Ctx*/)
+    public void createContact(String displayName, String number, String email, String company, Context cntx /*App or Activity Ctx*/)
     {
         Context contetx 	= cntx; //Application's context or Activity's context
         String strDisplayName 	=  displayName; // Name of the Person to add
         String strNumber 	=  number; //number of the person to add with the Contact
+        String strEmail = email;
+        String strCompany= company;
 
         ArrayList<ContentProviderOperation> cntProOper = new ArrayList<ContentProviderOperation>();
         int contactIndex = cntProOper.size();//ContactSize
@@ -62,7 +64,25 @@ public class CreateNewContact {
                 .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID,contactIndex)
                 .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
                 .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, strNumber) // Number to be added
-                .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE).build()); //Type like HOME, MOBILE etc
+                .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE).build());
+        //Type like HOME, MOBILE etc
+        cntProOper.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE,
+                            ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Email.DATA, strEmail)
+                    .withValue(ContactsContract.CommonDataKinds.Email.TYPE, ContactsContract.CommonDataKinds.Email.TYPE_WORK)
+                    .build());
+
+        cntProOper.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE,
+                            ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Organization.COMPANY, strCompany)
+                    .withValue(ContactsContract.CommonDataKinds.Organization.TYPE, ContactsContract.CommonDataKinds.Organization.TYPE_WORK)
+//                    .withValue(ContactsContract.CommonDataKinds.Organization.TITLE, JobTitle)
+//                    .withValue(ContactsContract.CommonDataKinds.Organization.TYPE, ContactsContract.CommonDataKinds.Organization.TYPE_WORK)
+                    .build());
         try
         {
             // We will do batch operation to insert all above data
